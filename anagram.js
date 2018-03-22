@@ -14,72 +14,77 @@ function anagramGrouper() {
         const anagrams = {};
         let obj = {};
         let counter = 0;
-        // var b = 'b';
-        // var obj = {
-        //     a: 'test1',
-        //     b: 'test2',
 
-        // };
+        for (j = 0; j < words.length; j++) {
+            let anagram = alphabetize(words[j])
+            let word = words[j]
 
-        // if (obj.hasOwnProperty(b)) {
-        //     console.log('has b');
-        // } else {
-        //     Object.defineProperty(obj, "c", {
-        //         value: new Array(),
-        //         writable: true,
-        //         enumerable: true,
-        //     });
-        //     obj['c'].push("it's working");
-        //     obj['c'].push("and now I just added multiple values boo fucking ya");
-        //     console.log(obj);
-        // }
-
-
-        // if (obj.hasOwnProperty('c')) {
-        //     console.log('has c');
-
-        // } 
-        // else {
-        //     Object.defineProperty(obj, "c", {
-        //         value: 'test3',
-        //         writable: true,
-        //         enumerable: true,
-        //     });
-        //     console.log(obj)
-        // }
-        for (i = 0; i < words.length; i++) {
-            let anagram = alphabetize(words[i])
-            for (j = 0; j < words.length; j++) {
-                let word = alphabetize(words[j])
-                if (anagram == word) {
-                    console.log(word[j] + " is an anagram")
-                    if (obj.hasOwnProperty(anagram)) {
-                        console.log(anagram + ' exists' + ' pushing word ' + words[j]);
-                        obj[anagram].push(words[j]);
-                    } else {
-                        Object.defineProperty(obj, anagram, {
-                            value: new Array(),
-                            writable: true,
-                            enumerable: true,
-                        });
-                        obj[anagram].push(words[j]);
-                        console.log("creating new object for " + anagram + " with " + word[j])
-                    }
-                } else {
-                    console.log(word[j] + "  is not and anagram")
-                }
+            if (obj.hasOwnProperty(anagram)) {
+                console.log(anagram + ' exists' + ' pushing word ' + words[j]);
+                obj[anagram].push(words[j]);
+            } else {
+                Object.defineProperty(obj, anagram, {
+                    value: new Array(),
+                    writable: true,
+                    enumerable: true,
+                });
+                obj[anagram].push(words[j]);
+                console.log("creating new object for " + anagram + " with " + word[j])
             }
-            console.log(counter += 1)
+            if (obj[anagram].length > 4) {
+                let div1 = document.createElement("span");
+                let newContent = document.createTextNode(obj[anagram] + ":::::::::");
+                div1.appendChild(newContent);
+                document.getElementById("main").appendChild(div1);
+
+            }
         }
+        console.log(counter += 1)
         console.log("finished")
         console.log(obj)
     }
 }
 
+
 function alphabetize(word) {
 
     return word.toLowerCase().split("").sort().join("").trim();
 }
+
+
+// var b = 'b';
+// var obj = {
+//     a: 'test1',
+//     b: 'test2',
+
+// };
+
+// if (obj.hasOwnProperty(b)) {
+//     console.log('has b');
+// } else {
+//     Object.defineProperty(obj, "c", {
+//         value: new Array(),
+//         writable: true,
+//         enumerable: true,
+//     });
+//     obj['c'].push("it's working");
+//     obj['c'].push("and now I just added multiple values boo fucking ya");
+//     console.log(obj);
+// }
+
+
+// if (obj.hasOwnProperty('c')) {
+//     console.log('has c');
+
+// } 
+// else {
+//     Object.defineProperty(obj, "c", {
+//         value: 'test3',
+//         writable: true,
+//         enumerable: true,
+//     });
+//     console.log(obj)
+// }
 // store the result (anagrams object) in a variable called groupedAnagrams
 
 // const destination = document.getElementById("main")
@@ -214,4 +219,46 @@ function alphabetize(word) {
 
 //         }
 //     }
+// }
+
+// function anagramGrouper() {
+
+
+//     document.getElementById("findButton").onclick = function () {
+//         const typedText = document.getElementById("input").value;
+//         const anagrams = {};
+//         let obj = {};
+//         let counter = 0;
+//         for (i = 0; i < words.length; i++) {
+//             let anagram = alphabetize(words[i])
+//             for (j = 0; j < words.length; j++) {
+//                 let word = alphabetize(words[j])
+//                 if (anagram == word) {
+//                     console.log(word[j] + " is an anagram")
+//                     if (obj.hasOwnProperty(anagram)) {
+//                         console.log(anagram + ' exists' + ' pushing word ' + words[j]);
+//                         obj[anagram].push(words[j]);
+//                     } else {
+//                         Object.defineProperty(obj, anagram, {
+//                             value: new Array(),
+//                             writable: true,
+//                             enumerable: true,
+//                         });
+//                         obj[anagram].push(words[j]);
+//                         console.log("creating new object for " + anagram + " with " + word[j])
+//                     }
+//                 } else {
+//                     console.log(word[j] + "  is not and anagram")
+//                 }
+//             }
+//             console.log(counter += 1)
+//         }
+//         console.log("finished")
+//         console.log(obj)
+//     }
+// }
+
+// function alphabetize(word) {
+
+//     return word.toLowerCase().split("").sort().join("").trim();
 // }
