@@ -1,6 +1,6 @@
 ﻿var words = [
 "a",
-"a's",
+"as",
 "aaa",
 "aaas",
 "aarhus",
